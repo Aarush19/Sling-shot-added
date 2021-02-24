@@ -39,7 +39,7 @@ function setup(){
     bird = new Bird(100,100);
 
     k = new Log(30,50,200,PI);
-    sling = new SlingShot();
+    sling = new SlingShot(bird.body,{x:300,y:80});
 
 }
 
@@ -67,6 +67,14 @@ function draw(){
     bird.display();
     platform.display();
 
-    k.display();
+    //k.display();
     sling.display();
 }
+
+function mouseDragged(){
+    Matter.Body.setPosition(bird.body,{x:mouseX,y:mouseY})
+}
+function mouseReleased() {
+    sling.fly()
+}
+
